@@ -22,7 +22,7 @@ const server = net.createServer(socket => {
   socket.on('data', () => {
   socket.write('+PONG\r\n');
 
-    // socket.end('+PONG\r\n');
+    socket.end();
   socket.pipe(socket);
 
   });
