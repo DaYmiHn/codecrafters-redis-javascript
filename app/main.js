@@ -17,11 +17,12 @@ const server = net.createServer(socket => {
   console.log('client connected');
 
   socket.on('data', (data) => {
-    console.log(`message - ${data.toString()}`)
-    if(data.toString() == 'ping'){
+    const message = data.toString().replace(/[\n|\t]/gmi, '').trim()
+    console.log(`message - `, message)
+    if(message == 'ping'){
       socket.write('+PONG\r\n');
-    } else if(data.toString().includes('echo')){
-      socket.write('+hey\r\n');
+    } else if(message.includes('echo')){
+      socket.write('+hey');
     }
   });
 
