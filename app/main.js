@@ -4,13 +4,25 @@ const net = require("net");
 console.log("Logs from your program will appear here!");
 
 // Uncomment this block to pass the first stage
+// const server = net.createServer(socket => {
+//   socket.pipe(socket);
+//   socket.on('data', (data) => {
+//     console.log(data)
+//     socket.end('+PONG\r\n');
+//   });
+// });
+
+
 const server = net.createServer(socket => {
-  socket.pipe(socket);
-  socket.on('data', (data) => {
-    console.log(data)
-    socket.end('+PONG\r\n');
+  // 'connection' listener.
+  console.log('client connected');
+  socket.on('end', () => {
+    console.log('client disconnected');
   });
+  socket.write('+PONG\r\n');
+  socket.pipe(c);
 });
+
 
 server.listen(6379, '127.0.0.1');
 
