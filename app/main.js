@@ -17,9 +17,9 @@ const server = net.createServer(socket => {
   // 'connection' listener.
   console.log('client connected');
 
-  socket.on('end', () => {
-    console.log('client disconnected');
-  });
+  // socket.on('end', () => {
+  //   console.log('client disconnected');
+  // });
 
   socket.on('data', (data) => {
     console.log(data.toString())
@@ -32,11 +32,11 @@ const server = net.createServer(socket => {
 
   // });
 
-  socket.on('end', (data) => {
-    socket.end('+PONG\r\n');
-  })
+  // socket.on('end', (data) => {
+  //   socket.end('+PONG\r\n');
+  // })
 
-  socket.pipe(socket);
+  // socket.pipe(socket);
 
   // socket.write('+PONG\r\n');
   // socket.pipe(socket);
