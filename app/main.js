@@ -30,10 +30,14 @@ const server = net.createServer(socket => {
     } else if(data.includes('echo')){
       socket.write(`+${data[1]}\r\n`);
     } else if(data.includes('set')){
+      if(data[3] == 'px'){
+        setTimeout(() => {
+          chache[data[1]] = undefined;
+        }, data[4])
+      }
       chache[data[1]] = data[2];
       socket.write(`+OK\r\n`);
     } else if(data.includes('get')){
-      
       socket.write(`+${chache[data[1]]}\r\n`);
     }
   });
