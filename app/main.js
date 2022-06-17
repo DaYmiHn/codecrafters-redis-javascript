@@ -17,19 +17,21 @@ const chache = {};
 const server = net.createServer(socket => {
   console.log('client connected');
   // socket.pipe(socket);
-  socket.on('data', (data) => {
+  socket.on('data', (mes) => {
 
     // console.log(`messdfsdfsdfage - `, data.toString())
-    const arr = data.toString().split('\r\n');
+    const arr = mes.toString().split('\r\n');
+    const data = arr.filter(el => el[0] !== '*' && el[0] !== '$' && !!el);
     console.log(arr)
 
     const message = data.toString().replace(/[\n|\t]/gmi, '').trim()
-    if(arr.includes('ping')){
+    if(data.includes('ping')){
       socket.write('+PONG\r\n');
-    } else if(arr.includes('echo')){
-      socket.write(`+${arr[4]}\r\n`);
-    } else if(arr.includes('set')){
-      socket.write(`+${arr[4]}\r\n`);
+    } else if(data.includes('echo')){
+      socket.write(`+${data[1]}\r\n`);
+    } else if(data.includes('set')){
+      chache[data[1]] = data[2];
+      socket.write(`+${data[1]}\r\n`);
     }
   });
 
