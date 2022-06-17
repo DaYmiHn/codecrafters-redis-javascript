@@ -6,7 +6,7 @@ console.log("Logs from your program will appear here!");
 // Uncomment this block to pass the first stage
 const server = net.createServer(socket => {
   socket.pipe(socket);
-
+  socket.end('PONG');
   socket.on('data', (data) => {
     console.log(data)
   })
