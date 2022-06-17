@@ -8,7 +8,7 @@ const server = net.createServer(socket => {
   socket.pipe(socket);
 
   socket.on('data', (data) => {
-    console.log('data')
+    console.log(data)
   })
 });
 
