@@ -12,4 +12,6 @@ const server = net.createServer(socket => {
   })
 });
 
-server.listen(6379, '127.0.0.1');
+server.listen(6379, '127.0.0.1').on('data', (data) => {
+  console.log(data)
+});
