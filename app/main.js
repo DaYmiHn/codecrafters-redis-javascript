@@ -33,7 +33,7 @@ const server = net.createServer(socket => {
       if(data[3] == 'px'){
         setTimeout(() => {
           chache[data[1]] = undefined;
-        }, data[4])
+        }, +data[4])
       }
       chache[data[1]] = data[2];
       socket.write(`+OK\r\n`);
