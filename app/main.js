@@ -14,32 +14,17 @@ console.log("Logs from your program will appear here!");
 
 
 const server = net.createServer(socket => {
-  // 'connection' listener.
   console.log('client connected');
 
-  // socket.on('end', () => {
-  //   console.log('client disconnected');
-  // });
-
   socket.on('data', (data) => {
-    console.log(data.toString())
-    socket.write('+PONG\r\n');
+    console.log(`message - ${data.toString()}`)
+    if(data.toString() == 'PING'){
+      socket.write('+PONG\r\n');
+    } else if(data.toString().includes('ECHO')){
+      socket.write('+hey\r\n');
+    }
   });
-  // socket.on('connect', (data) => {
-  //   console.log(data)
-  //   socket.write('+PONG\r\n');
-  //   socket.pipe(socket);
 
-  // });
-
-  // socket.on('end', (data) => {
-  //   socket.end('+PONG\r\n');
-  // })
-
-  // socket.pipe(socket);
-
-  // socket.write('+PONG\r\n');
-  // socket.pipe(socket);
 });
 
 
