@@ -22,7 +22,7 @@ const server = net.createServer(socket => {
     // console.log(`messdfsdfsdfage - `, data.toString())
     const arr = mes.toString().split('\r\n');
     const data = arr.filter(el => el[0] !== '*' && el[0] !== '$' && !!el);
-    console.log(arr)
+    console.log(data)
 
     const message = data.toString().replace(/[\n|\t]/gmi, '').trim()
     if(data.includes('ping')){
