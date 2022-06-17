@@ -32,6 +32,9 @@ const server = net.createServer(socket => {
     } else if(data.includes('set')){
       chache[data[1]] = data[2];
       socket.write(`+OK\r\n`);
+    } else if(data.includes('get')){
+      
+      socket.write(`+${chache[data[1]]}\r\n`);
     }
   });
 
