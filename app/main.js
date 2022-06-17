@@ -15,7 +15,7 @@ console.log("Logs from your program will appear here!");
 
 const server = net.createServer(socket => {
   console.log('client connected');
-  socket.pipe(socket);
+  // socket.pipe(socket);
   socket.on('data', (data) => {
     const message = data.toString().replace(/[\n|\t]/gmi, '').trim()
     console.log(`message - `, message)
