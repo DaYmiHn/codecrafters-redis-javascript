@@ -17,8 +17,8 @@ const server = net.createServer(socket => {
   console.log('client connected');
   // socket.pipe(socket);
   socket.on('data', (data) => {
+    console.log(`messdfsdfsdfage - `, data)
     const message = data.toString().replace(/[\n|\t]/gmi, '').trim()
-    console.log(`messdfsdfsdfage - `, message)
     // if(message == 'ping'){
       socket.write('+PONG\r\n');
     // } else if(message.includes('echo')){
