@@ -18,11 +18,11 @@ const server = net.createServer(socket => {
 
   socket.on('data', (data) => {
     console.log(`message - ${data.toString()}`)
-    if(data.toString() == 'PING'){
+    // if(data.toString() == 'PING'){
       socket.write('+PONG\r\n');
-    } else if(data.toString().includes('ECHO')){
-      socket.write('+hey\r\n');
-    }
+    // } else if(data.toString().includes('ECHO')){
+    //   socket.write('+hey\r\n');
+    // }
   });
 
 });
