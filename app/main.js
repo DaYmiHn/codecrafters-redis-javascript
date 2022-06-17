@@ -41,7 +41,7 @@ const server = net.createServer(socket => {
       if(!!chache[data[1]]){
         socket.write(`+${chache[data[1]]}\r\n`);
       } else {
-        socket.write('null')
+        socket.write(null)
       }
     }
   });
