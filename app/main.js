@@ -20,7 +20,7 @@ const server = net.createServer(socket => {
     console.log('client disconnected');
   });
   socket.write('+PONG\r\n');
-  socket.pipe(c);
+  socket.pipe(socket);
 });
 
 
