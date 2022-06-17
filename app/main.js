@@ -19,11 +19,11 @@ const server = net.createServer(socket => {
   socket.on('data', (data) => {
     const message = data.toString().replace(/[\n|\t]/gmi, '').trim()
     console.log(`message - `, message)
-    if(message == 'ping'){
+    // if(message == 'ping'){
       socket.write('+PONG\r\n');
-    } else if(message.includes('echo')){
-      socket.write('+hey');
-    }
+    // } else if(message.includes('echo')){
+      // socket.write('+hey');
+    // }
   });
 
 });
