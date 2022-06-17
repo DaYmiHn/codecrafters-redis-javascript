@@ -12,6 +12,7 @@ console.log("Logs from your program will appear here!");
 //   });
 // });
 
+const chache = {};
 
 const server = net.createServer(socket => {
   console.log('client connected');
@@ -26,6 +27,8 @@ const server = net.createServer(socket => {
     if(arr.includes('ping')){
       socket.write('+PONG\r\n');
     } else if(arr.includes('echo')){
+      socket.write(`+${arr[4]}\r\n`);
+    } else if(arr.includes('set')){
       socket.write(`+${arr[4]}\r\n`);
     }
   });
