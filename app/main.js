@@ -18,14 +18,16 @@ const server = net.createServer(socket => {
   // socket.pipe(socket);
   socket.on('data', (data) => {
 
-    console.log(`messdfsdfsdfage - `, data.toString())
-    console.log('rows - ', data.toString().split('\r\n'))
+    // console.log(`messdfsdfsdfage - `, data.toString())
+    const arr = data.toString().split('\r\n');
+    console.log(arr)
+
     const message = data.toString().replace(/[\n|\t]/gmi, '').trim()
-    // if(message == 'ping'){
+    if(arr.includes('ping')){
       socket.write('+PONG\r\n');
-    // } else if(message.includes('echo')){
+    } else if(message.includes('echo')){
       // socket.write('+hey');
-    // }
+    }
   });
 
 });
