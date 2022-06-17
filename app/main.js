@@ -20,6 +20,8 @@ const server = net.createServer(socket => {
     console.log('client disconnected');
   });
   socket.on('data', () => {
+  socket.write('+PONG\r\n');
+
     socket.end('+PONG\r\n');
   socket.pipe(socket);
 
