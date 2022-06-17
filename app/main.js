@@ -25,8 +25,8 @@ const server = net.createServer(socket => {
     const message = data.toString().replace(/[\n|\t]/gmi, '').trim()
     if(arr.includes('ping')){
       socket.write('+PONG\r\n');
-    } else if(message.includes('echo')){
-      // socket.write('+hey');
+    } else if(arr.includes('echo')){
+      socket.write(`+${arr[4]}\r\n`);
     }
   });
 
