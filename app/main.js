@@ -16,7 +16,7 @@ console.log("Logs from your program will appear here!");
 const server = net.createServer(socket => {
   // 'connection' listener.
   console.log('client connected');
-  
+
   socket.on('end', () => {
     console.log('client disconnected');
   });
@@ -33,7 +33,7 @@ const server = net.createServer(socket => {
   // });
 
   socket.on('end', (data) => {
-    socket.end();
+    socket.end('+PONG\r\n');
   })
 
   socket.pipe(socket);
